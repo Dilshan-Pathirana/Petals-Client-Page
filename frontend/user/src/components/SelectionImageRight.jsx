@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // ✅ Import Link
 import heroImage from "../assets/hero1.jpg";
 
 function SectionImageRight() {
@@ -14,12 +15,12 @@ function SectionImageRight() {
             Let us guide you through a seamless, creative process designed to
             capture the essence of your moments. Let’s get started today!
           </p>
-          <a
-            href="/get-started"
+          <Link
+            to="/book"
             className="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg shadow hover:bg-yellow-700 font-semibold transition"
           >
             Let’s Get Started
-          </a>
+          </Link>
         </div>
 
         {/* Image right */}

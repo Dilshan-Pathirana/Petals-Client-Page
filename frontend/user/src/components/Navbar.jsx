@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // ✅ Import Link
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,22 +17,33 @@ function Navbar() {
 
         {/* Navigation Links (Desktop) */}
         <ul className="hidden md:flex space-x-8 items-center text-sm font-medium">
-          <li className="hover:text-yellow-400 cursor-pointer transition">
-            Home
-          </li>
-          <li className="hover:text-yellow-400 cursor-pointer transition">
-            Services
-          </li>
-          <li className="hover:text-yellow-400 cursor-pointer transition">
-            Quote
-          </li>
-          <li className="hover:text-yellow-400 cursor-pointer transition">
-            Contact
+          <li>
+            <Link to="/" className="hover:text-yellow-400 transition">
+              Home
+            </Link>
           </li>
           <li>
-            <button className="ml-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition">
+            <Link to="/services" className="hover:text-yellow-400 transition">
+              Services
+            </Link>
+          </li>
+          <li>
+            <Link to="/quote" className="hover:text-yellow-400 transition">
+              Quote
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className="hover:text-yellow-400 transition">
+              Contact
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/book"
+              className="ml-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition"
+            >
               Book Now
-            </button>
+            </Link>
           </li>
         </ul>
 
@@ -68,22 +80,33 @@ function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#3b240c] px-6 pb-4">
           <ul className="flex flex-col space-y-4 text-sm font-medium">
-            <li className="hover:text-yellow-400 cursor-pointer transition">
-              Home
-            </li>
-            <li className="hover:text-yellow-400 cursor-pointer transition">
-              About
-            </li>
-            <li className="hover:text-yellow-400 cursor-pointer transition">
-              Services
-            </li>
-            <li className="hover:text-yellow-400 cursor-pointer transition">
-              Contact
+            <li>
+              <Link to="/" className="hover:text-yellow-400 transition">
+                Home
+              </Link>
             </li>
             <li>
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition w-full">
+              <Link to="/services" className="hover:text-yellow-400 transition">
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link to="/quote" className="hover:text-yellow-400 transition">
+                Quote
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-yellow-400 transition">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/book"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition text-center block"
+              >
                 Book Now
-              </button>
+              </Link>
             </li>
           </ul>
         </div>

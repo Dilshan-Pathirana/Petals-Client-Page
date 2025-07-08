@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import SectionImageLeft from "../components/SelectionImageLeft";
@@ -11,7 +11,6 @@ function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#fdf6ee] to-[#f6e5c6] overflow-x-hidden">
       {/* Header/Nav */}
-      <Header />
 
       {/* Main Content */}
       <main className="flex-grow">
@@ -24,7 +23,7 @@ function Home() {
         {<SectionImageLeft />}
         {<SectionImageRight />}
 
-        {<AboutAndServices/>}
+        {<AboutAndServices />}
       </main>
 
       {/* Footer */}
