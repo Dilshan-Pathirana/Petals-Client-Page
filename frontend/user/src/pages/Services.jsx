@@ -1,23 +1,43 @@
-import React, { useState } from "react";
-import { services } from "../data/servicesData";
+import { useEffect, useState } from "react";
 import ServiceCategorySelector from "../components/ServiceCategorySelector";
 import ServiceList from "../components/ServiceList";
 import TagFilter from "../components/TagFilter";
 
+
+
+
+// get url from.env
+const BACKEND_URL = import.meta.env.BACKEND_URL || "http://localhost:4000/api";
+
 function Services() {
+
+
+  //fetch services data from backend
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch(`${BACKEND_URL}/services`)
+      .then((response) => response.json())
+      .then((data) => setServices(data));
+  }, []);
+
+  console.log(services);
+
   const [selectedCategory, setSelectedCategory] = useState("photography");
   const [selectedTag, setSelectedTag] = useState(null);
 
-  const categoryServices = services[selectedCategory];
+  // Filter services by selected category
+  const categoryServices = services.filter(
+    (service) => service.category === selectedCategory
+  );
 
   // Get unique tags for current category
   const availableTags = [
     ...new Set(categoryServices.flatMap((service) => service.tags || [])),
   ];
 
-  // Filter services by tag if selected
+  // Filter services by selected tag if any
   const filteredServices = selectedTag
-    ? categoryServices.filter((s) => s.tags?.includes(selectedTag))
+    ? categoryServices.filter((service) => service.tags?.includes(selectedTag))
     : categoryServices;
 
   return (
@@ -38,11 +58,11 @@ function Services() {
         onSelectTag={setSelectedTag}
       />
 
-     <ServiceList
-  services={filteredServices}
-  selectedCategory={selectedCategory}
-  selectedTag={selectedTag}
-/>
+      <ServiceList
+        services={filteredServices}
+        selectedCategory={selectedCategory}
+        selectedTag={selectedTag}
+      />
     </div>
   );
 }
